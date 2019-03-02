@@ -5,7 +5,7 @@
 /logs
 
 # Mongo
-/mongodb
+/mongodb/seeds
 
 # node modules
 /node_modules
