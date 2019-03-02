@@ -4,5 +4,8 @@
 # Logs
 /logs
 
+# Mongo
+/mongodb
+
 # node modules
 /node_modules

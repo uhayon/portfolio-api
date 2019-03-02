@@ -1,0 +1,30 @@
+version: '3.6'
+
+services:
+
+  # Backend API
+  portfolio-api:
+    container_name: backend_portfolio
+    build: ./
+    command: npm start
+    working_dir: /usr/src/portfolio-api
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://mongo:${MONGO_PORT}/portfolio
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/portfolio-api
+  
+  # MongoDB
+  mongodb:
+    image: mongo:4.0.5
+    env_file: .env
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    build: ./mongodb
+    restart: always
