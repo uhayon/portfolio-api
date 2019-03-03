@@ -10,7 +10,7 @@ services:
     working_dir: /usr/src/portfolio-api
     env_file: .env
     environment:
-      MONGODB_URI: mongodb://mongo:${MONGO_PORT}/portfolio
+      MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:${MONGO_PORT}/${MONGO_DB_NAME}
     ports:
       - '3000:3000'
     volumes:
