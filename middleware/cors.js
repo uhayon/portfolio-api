@@ -10,7 +10,7 @@ const getCorsConfiguration = () => {
       if (origin === process.env.FRONT_END_DOMAIN) {
         callback(null, true);
       } else {
-        callback('Not allowed by CORS')
+        callback(new Error('Not allowed by CORS'));
       }
     }
   });
