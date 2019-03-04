@@ -17,7 +17,6 @@ app.use(securityMiddleware.securityPolicy());
 app.use(morgan());
 app.use(cors());
 
-app.get('/', (req, res) => res.json('Vamo arriba'));
 app.get('/projects/latest', getLatestProjects(logger));
 app.get('/projects', getAllProject(logger));
 app.get('/technologies', getTechnologies(logger));
