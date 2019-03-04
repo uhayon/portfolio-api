@@ -4,7 +4,8 @@
   "description": "Backend for my personal portfolio site",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "mocha ./tests --recursive"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/uhayon/portfolio-api#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "dotenv": "^6.2.0",
+    "mocha": "^6.0.2",
     "nodemon": "^1.18.10"
   },
   "dependencies": {

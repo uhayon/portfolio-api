@@ -6,15 +6,18 @@ services:
   portfolio-api:
     container_name: backend_portfolio
     build: ./
+    restart: always
     command: npm start
     working_dir: /usr/src/portfolio-api
     env_file: .env
     environment:
-      MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:${MONGO_PORT}/${MONGO_DB_NAME}
+      MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:${MONGO_PORT}/${MONGO_DB_NAME}
     ports:
       - '3000:3000'
     volumes:
       - ./:/usr/src/portfolio-api
+    depends_on:
+      - mongodb
   
   # MongoDB
   mongodb:
