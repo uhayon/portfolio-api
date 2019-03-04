@@ -1,7 +1,7 @@
 const { readOneDocumentFromCollection } = require('../mongodb/db');
 
 const getTechnologies = (logger) => (req, res) => {
-  readOneDocumentFromCollection({ collection: 'technologies'})
+  readOneDocumentFromCollection({ collection: process.env.TECHNOLOGIES_COLLECTION})
     .then(technologiesObject => res.json(technologiesObject))
     .catch(err => {
       logger.error(`Get technologies: ${err}`);

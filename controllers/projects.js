@@ -1,7 +1,7 @@
 const { readFromCollection } = require('../mongodb/db');
 
 const getLatestProjects = (logger) => (req, res) => {
-  readFromCollection({ collection: 'projects', limit: process.env.LATEST_PROJECTS_LIMIT })
+  readFromCollection({ collection: process.env.PROJECTS_COLLECTION, limit: process.env.LATEST_PROJECTS_LIMIT })
     .then(response => res.json(response))
     .catch(err => {
       logger.error(err);
