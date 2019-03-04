@@ -9,7 +9,7 @@ services:
     restart: always
     command: npm start
     working_dir: /usr/src/portfolio-api
-    # env_file: .env
+    env_file: .env
     environment:
       MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:${MONGO_PORT}/${MONGO_DB_NAME}
     ports:
@@ -22,7 +22,7 @@ services:
   # MongoDB
   mongodb:
     image: mongo:4.0.5
-    # env_file: .env
+    env_file: .env
     environment:
       MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
