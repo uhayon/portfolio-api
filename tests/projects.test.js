@@ -1,12 +1,8 @@
+require('dotenv').config();
 const chai = require('chai')
-
-const app = require('../server');
 
 // Configure Chai
 chai.should();
-
-// Mock data
-
 
 describe('Getting projects', () => {
   it(`Should get the latest projects (${process.env.LATEST_PROJECTS_LIMIT} or less)`, (done) => {

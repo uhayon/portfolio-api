@@ -8,6 +8,7 @@ const securityMiddleware = require('./middleware/security');
 const { morgan, logger } = require('./middleware/logger');
 
 const { getLatestProjects, getAllProject } = require('./controllers/projects');
+const { getTechnologies } = require('./controllers/technologies');
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use(cors());
 app.get('/', (req, res) => res.json('Vamo arriba'));
 app.get('/projects/latest', getLatestProjects(logger));
 app.get('/projects', getAllProject(logger));
+app.get('/technologies', getTechnologies(logger));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

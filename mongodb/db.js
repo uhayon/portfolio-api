@@ -31,6 +31,27 @@ const readFromCollection = ({ collection, limit }) => {
   });
 }
 
+const readOneDocumentFromCollection = ({ collection }) => {
+  return new Promise((resolve, reject) => {
+    return connect()
+      .then(client => {
+        try {
+          const db = client.db(process.env.MONGO_DB_NAME);
+          const document = db.collection(collection).findOne();
+          client.close();
+          if (document) {
+            return resolve(document);
+          } else {
+            return reject('Technologies not found');
+          }
+        } catch(ex) {
+          return reject(ex);
+        }
+      })
+  });
+}
+
 module.exports = {
-  readFromCollection
+  readFromCollection,
+  readOneDocumentFromCollection
 }
