@@ -17,12 +17,13 @@ const connect = () => {
   });
 }
 
-const readFromCollection = ({ collection, limit }) => {
+const readFromCollection = ({ collection, limit, sort }) => {
+  const sortOptions = sort || {};
   return new Promise((resolve, reject) => {
     return connect()
       .then(client => {
         const db = client.db(process.env.MONGO_DB_NAME);
-        db.collection(collection).find().limit(limit || 0).toArray((err, docs) => {
+        db.collection(collection).find().sort({ _id: 1, ...sortOptions }).limit(limit || 0).toArray((err, docs) => {
           client.close();
           if (err) {
             reject(`Error retrieving ${collection}: ${err}`);
