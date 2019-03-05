@@ -5,16 +5,16 @@ const getLatestProjects = (logger) => (req, res) => {
     .then(response => res.json(response))
     .catch(err => {
       logger.error(err);
-      res.status(400).json(err);
+      res.status(400).json('Unable to get the latest projects');
     });
 }
 
 const getAllProject = (logger) => (req, res) => {
-  readFromCollection({ collection: 'projects', sort: { _id: -1 } })
+  readFromCollection({ collection: process.env.PROJECTS_COLLECTION, sort: { _id: -1 } })
     .then(response => res.json(response))
     .catch(err => {
       logger.error(err);
-      res.status(400).json(err);
+      res.status(400).json('Unable to get the projects');
     });
 }
 
