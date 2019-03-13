@@ -2,12 +2,18 @@ version: 2.1
 orbs:
   heroku: circleci/heroku@0.0.5
 workflows:
-  heroku_deploy:
+  build-test-deploy:
     jobs:
+      - build
+      - test:
+          requires:
+            - build
       - deploy:
           filters:
             branches:
               only: master
+          requires:
+            - test
 jobs:
   build:
     docker:
