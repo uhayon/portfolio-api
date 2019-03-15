@@ -24,7 +24,7 @@ app.use(cors());
 app.get('/projects/latest', getLatestProjects(logger));
 app.get('/projects', getAllProject(logger));
 app.get('/technologies', getTechnologies(logger));
-app.post('/contact'/*, [rateLimiter, speedLimiter]*/, sendMail(logger));
+app.post('/contact', [rateLimiter, speedLimiter], sendMail(logger));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

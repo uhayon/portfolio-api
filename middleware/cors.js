@@ -8,13 +8,13 @@ const getCorsConfiguration = () => {
   return cors({
     origin: (origin, callback) => {
       // Allow all requets temporarily
-      callback(null, true);
+      // callback(null, true);
       
-      // if (origin === process.env.FRONT_END_DOMAIN) {
-      //   callback(null, true);
-      // } else {
-      //   callback(new Error('Not allowed by CORS'));
-      // }
+      if (origin === process.env.FRONT_END_DOMAIN) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     }
   });
 }
