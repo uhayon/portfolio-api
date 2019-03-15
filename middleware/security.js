@@ -4,7 +4,7 @@ module.exports = {
   basic: helmet,
   securityPolicy: () => helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", process.env.ORIGIN],
+      defaultSrc: ["'self'", `'${process.env.FRONT_END_DOMAIN}'`],
       styleSrc: ["'self'"]
     }
   })
